@@ -10,3 +10,4 @@ def home(request):
 def about(request):
     #return HttpResponse('<h2>Welcome to ABOUT page</h2>')
     return render(request,'about.html')
+
