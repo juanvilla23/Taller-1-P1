@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from movie import views as MovieViews
 from django.conf.urls.static import static
 from django.conf import settings
@@ -26,5 +26,10 @@ urlpatterns = [
     path("welcome", MovieViews.home ,name='welcome'),
     path('', MovieViews.home, name='home'), 
     path('about',MovieViews.about,name='about'),
+    path('news/',include('news.urls')),
+    path('statistics/',MovieViews.statistics_view,name='statistics'),
+    path('statisticsgender/',MovieViews.statistics_view_gender,name='statisticsgender'),
+    path('signup/',MovieViews.signup,name="signup"),
+    
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
